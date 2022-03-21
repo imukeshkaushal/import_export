@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+        #navbar {
+          display: flex;
+          justify-content: space-between;
+          border: solid 1px black;
+          padding-left: 4%;
+          padding-right: 4%;
+        }
+        #options {
+          display: flex;
+          justify-content: space-between;
+          gap: 40px;
+        }
+        a{
+            text-decoration: none;
+        }
+        #data{
+            display: grid;
+            grid-template-columns: repeat(4,20%);
+            grid-gap: 5%;
+            padding: 5%;
+        }
+        img{
+            width: 50%;
+        }
+      </style>
+  </head>
+  <body>
+    <div id="header"></div>
+  </body>
+</html>
+<script type="module">
+
+    // What is a module?
+    // more flexible and more powerful js file
+    
+        import navbar from "./components/navbar.js";
+        import {getData, append} from "./scripts/fetchappend.js";
+    
+        let header = document.getElementById("header");
+        header.innerHTML = navbar();
+    
+        let parent = document.getElementById("data");
+    
+        let response = await getData(`https://fakestoreapi.com/products/category/jewelery`);
+        console.log(response);
+    
+        append(response,parent);
+    
+    
+    </script>
